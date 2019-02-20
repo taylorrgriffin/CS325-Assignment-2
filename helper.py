@@ -34,6 +34,12 @@ def generate_sequences():
             generated = generated + 1
         output.close()
 
+def parse_sequences(file_path):
+    with open(file_path, 'r') as f:
+        reader = csv.reader(f)
+        lines = list(reader)
+    return(lines)
+
 def parse_weight_matrix(file_path):
     # parse csv into lines
     with open(file_path, 'r') as f:
