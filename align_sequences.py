@@ -65,10 +65,13 @@ input_sequence = sys.argv[2]
 
 matrix = helper.parse_weight_matrix(input_matrix)
 pairs = helper.parse_sequences(input_sequence)
+output = open("imp2output.txt", "w")
 
 for pair in pairs:
     seq1 = pair[0]
     seq2 = pair[1]
     m = len(seq1)
     n = len(seq2)
-    print(opt_align(m, n, seq1, seq2, matrix))
+    output.write(opt_align(m, n, seq1, seq2, matrix) + "\n")
+
+output.close()
