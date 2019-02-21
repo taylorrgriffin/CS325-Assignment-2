@@ -1,6 +1,7 @@
 import os
 import sys
 import helper
+import timeit
 
 
 def opt_align(m, n, seq1, seq2, matrix):
@@ -66,12 +67,18 @@ input_sequence = sys.argv[2]
 matrix = helper.parse_weight_matrix(input_matrix)
 pairs = helper.parse_sequences(input_sequence)
 output = open("imp2output.txt", "w")
-
+times = []
 for pair in pairs:
     seq1 = pair[0]
     seq2 = pair[1]
     m = len(seq1)
     n = len(seq2)
+    start = timeit.default_timer()
     output.write(opt_align(m, n, seq1, seq2, matrix) + "\n")
-
+    end = timeit.default_timer()
+    times.append(end-start)
+avg_time = sum(times)/float(len(times))
+print("output file:\t", os.path.dirname(os.path.abspath(__file__)) +
+      "/imp2output.txt")
+print("average time:\t", str(avg_time))
 output.close()
