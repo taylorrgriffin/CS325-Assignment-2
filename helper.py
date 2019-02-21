@@ -4,7 +4,7 @@ import csv
 import random
 
 def cost(s1,s2,costMatrix):
-    return(next(item for item in costMatrix if item['key'] == s1)[s2])
+    return(int(next(item for item in costMatrix if item['key'] == s1)[s2]))
 
 def create_random_sequences(size):
     # create a sequence pair of a given length
