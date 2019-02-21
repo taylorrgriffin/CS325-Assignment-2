@@ -73,12 +73,21 @@ for pair in pairs:
     seq2 = pair[1]
     m = len(seq1)
     n = len(seq2)
+    # start timer
     start = timeit.default_timer()
+    # call actual dp algorithm
     output.write(opt_align(m, n, seq1, seq2, matrix) + "\n")
+    # end timer
     end = timeit.default_timer()
     times.append(end-start)
+
+# get average time
 avg_time = sum(times)/float(len(times))
+
+# print output file path
 print("output file:\t", os.path.dirname(os.path.abspath(__file__)) +
       "/imp2output.txt")
+
+# print average computation time
 print("average time:\t", str(avg_time))
 output.close()
